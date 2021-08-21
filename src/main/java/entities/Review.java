@@ -1,4 +1,4 @@
-package com.example.demo.review;
+package entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
