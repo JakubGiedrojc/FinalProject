@@ -11,8 +11,12 @@ public class MovieCopy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long copyId;
-    @Id
+    @Column
     private long movieId;
+    @Column
+    private Long orderId;
+
+
     //
 
 
