@@ -16,12 +16,9 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String directory;
-    // TODO
-    // waiting for enums
-    private Enum status;
-    private LocalDate premiereDate;
-
-
+    private String cover;
+    // TODO enums
+    private Enum genre;
+    private LocalDate dateOfPremiere;
+    private String description;
 }
