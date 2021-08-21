@@ -1,38 +1,37 @@
-package entities;
+package com.example.demo.entities;
 
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
 
-public class Address {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private String city;
+    private String login;
 
     @Column
-    private String street;
+    private String password;
 
     @Column
-    private String zipCode;
+    private String emailAddress;
 
-    @Column
-    private int flatNumber;
+    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Address> addresses;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+
+
 
 }

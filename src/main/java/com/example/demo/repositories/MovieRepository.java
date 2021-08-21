@@ -1,8 +1,7 @@
-package repositories;
+package com.example.demo.repositories;
 
-import entities.Movie;
+import com.example.demo.entities.Movie;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
