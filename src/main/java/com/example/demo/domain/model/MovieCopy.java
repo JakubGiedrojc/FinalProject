@@ -14,7 +14,7 @@ public class MovieCopy {
 
     private long movieId;
 
-    private Long orderId;
+    private long orderId;
 
 
 
