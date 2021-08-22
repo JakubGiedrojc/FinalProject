@@ -24,4 +24,6 @@ public class Movie {
     private String description;
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Copy> copies;
+    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+    private List<Review> reviews;
 }
