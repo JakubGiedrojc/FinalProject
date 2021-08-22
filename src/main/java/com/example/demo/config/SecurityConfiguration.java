@@ -12,7 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/console/**")
+                .antMatchers("/h2/**")
                 .permitAll();
         httpSecurity
                 .csrf()
@@ -22,4 +22,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .disable();
     }
+
 }

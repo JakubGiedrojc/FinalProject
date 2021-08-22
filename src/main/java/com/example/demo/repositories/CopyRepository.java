@@ -11,5 +11,5 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface CopyRepository extends CrudRepository<Copy, Integer> {
-    List<Copy> findAllByMovie(Movie movie);
+    List<Optional<Copy>> findAllByMovie(Movie movie);
 }
