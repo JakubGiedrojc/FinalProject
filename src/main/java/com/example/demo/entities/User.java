@@ -32,7 +32,7 @@ public class User {
     private List<Address> addresses;
 
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Order> order;
+    private List<Order> orders;
 
 
 

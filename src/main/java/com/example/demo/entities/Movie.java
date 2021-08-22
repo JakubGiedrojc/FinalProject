@@ -15,12 +15,11 @@ import java.util.List;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id")
     private Long id;
     private String cover;
+    private String title;
     // TODO enums
     private Enum genre;
-    private String title;
     private LocalDate dateOfPremiere;
     private String description;
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
