@@ -19,4 +19,5 @@ public class Order {
     private LocalDate startDate;
     private LocalDate endDate;
     private float price;
+
 }
