@@ -1,7 +1,6 @@
-package repositories;
+package com.example.demo.repositories;
 
-import entities.Movie;
-import entities.Review;
+import com.example.demo.entities.Review;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RevievRepository extends CrudRepository<Review, Long> {
