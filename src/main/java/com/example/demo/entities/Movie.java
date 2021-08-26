@@ -19,7 +19,10 @@ public class Movie {
     private String cover;
     private String title;
     // TODO enums
-    private Enum genre;
+
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
+
     private LocalDate dateOfPremiere;
     private String description;
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
