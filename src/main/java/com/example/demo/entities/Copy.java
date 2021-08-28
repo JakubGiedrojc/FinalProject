@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "movie_copy")
 public class Copy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
