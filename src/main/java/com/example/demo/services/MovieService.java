@@ -1,7 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Movie;
-import com.example.demo.exceptions.MovieAlreadyExistException;
+import com.example.demo.exceptions.MovieAlreadyPresentException;
 import com.example.demo.exceptions.EmptyMovieDataBaseException;
 import com.example.demo.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +33,12 @@ public class MovieService {
     }
 
     @Transactional
-    public Movie InsertNewMovie(Movie movie) throws MovieAlreadyExistException {
+    public Movie InsertNewMovie(Movie movie) throws MovieAlreadyPresentException {
         if (!movieRepository.findByTitle(movie.getTitle()).isPresent()) {
 
             return movieRepository.save(movie);
         } else {
-            throw new MovieAlreadyExistException(movie.getTitle());
+            throw new MovieAlreadyPresentException(movie.getTitle());
         }
 
 
