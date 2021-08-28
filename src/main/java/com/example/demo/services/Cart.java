@@ -18,7 +18,7 @@ import java.util.*;
 
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-@Transactional
+@Transactional //test comment
 public class Cart {/*
 
     private final CopyRepository copyRepository;
