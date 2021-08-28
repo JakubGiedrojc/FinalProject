@@ -13,6 +13,7 @@ public enum Genre {
     KRYMINAL,
     PSYCHOLOGICZNY,
     SCI_FI,
+    SENSACYJNY,
     THRILLER,
     WESTERN,
     WOJENNY
