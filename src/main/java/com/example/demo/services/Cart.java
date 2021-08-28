@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Copy;
 import com.example.demo.entities.Movie;
+import com.example.demo.entities.Order;
 import com.example.demo.exceptions.NotEnoughCopiesInResourcesException;
 import com.example.demo.repositories.CopyRepository;
 import com.example.demo.repositories.OrderRepository;
@@ -18,11 +19,11 @@ import java.util.*;
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Transactional
-public class Cart {
+public class Cart {/*
 
     private final CopyRepository copyRepository;
     private final OrderRepository orderRepository;
-    private final Map<Copy, Movie> copies = new HashMap<>();
+    private final List<Movie> movies = new ArrayList<>();// zamienić na List<Film>
     @Autowired
     public Cart(CopyRepository copyRepository,OrderRepository orderRepository) {
         this.copyRepository = copyRepository;
@@ -30,32 +31,33 @@ public class Cart {
     }
 
     public void addCopy(Movie movie) throws NotEnoughCopiesInResourcesException {
+        //check czy film ma dostępne kopie z orderId ==null
+        //select movie & order id==null
         if (copyRepository.findFirstByMovie(movie)!=null){
             copies.put(movie.getCopies().stream().findFirst().get(),movie);
         }else throw new NotEnoughCopiesInResourcesException();
     }
     public void removeCopy(Copy copy) {
+        //remove movie
         if (copies.containsKey(copy)) {
                 copies.remove(copy);}
             else {
                 System.out.println("You cannot do this operation");
         }
     }
-    public Map<Copy,Movie> getCopiesInCart(){
+    public Map<Copy,Movie> getCopiesInCart(){ //unmodifibleList
         return Collections.unmodifiableMap(copies);
     }
-    public void checkout() throws NotEnoughCopiesInResourcesException {
-            Copy copy;
-            for (Map.Entry<Copy, Movie> entry : copies.entrySet()) {
-                // Refresh quantity for every product before checking
-                copy = copyRepository.findFirstByMovie(entry.getKey().getMovie());
-                System.out.println();
-            }
+    public Order checkout() throws NotEnoughCopiesInResourcesException {
+        Copy copy;
+        for (Map.Entry<Copy, Movie> entry : copies.entrySet()) {
+            // Refresh quantity for every product before checking
+            copy = copyRepository.findFirstByMovie(entry.getKey().getMovie());
+            System.out.println();
+        }
             /*orderRepository.save(copies.keySet());
             productRepository.flush();
-            copies.clear();*/
-    }
-    public BigDecimal getTotal(){
-        return null;
-    }
+            copies.clear();
+
+    }*/
 }
