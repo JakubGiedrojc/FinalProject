@@ -16,9 +16,10 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String cover;
+    @Column(nullable = false)
     private String title;
-    // TODO enums
 
     @Enumerated(EnumType.STRING)
     private Genre genre;
@@ -27,6 +28,6 @@ public class Movie {
     private String description;
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Copy> copies;
-    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Review> reviews;
 }

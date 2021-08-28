@@ -9,13 +9,13 @@ VALUES ('Leon zawodowiec', '1994-09-14', 'KRYMINAL', 'Reżyseria: Luc Besson');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Requiem dla snu', '2000-05-14', 'DRAMAT', 'Reżyseria: Darren Aronofsky');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Matrix', '1999-03-24', 'SCI-FI', 'Reżyseria: Lilly Wachowski');
+VALUES ('Matrix', '1999-03-24', 'SCI_FI', 'Reżyseria: Lilly Wachowski');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Milczenie owiec', '1991-01-30', 'THRILLER', 'Reżyseria: Jonathan Demme');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Gladiator', '2000-05-01', 'HISTORYCZNY', 'Reżyseria: Ridley Scott');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Avatar', '2009-12-10', 'SCI-FI', 'Reżyseria: James Cameron');
+VALUES ('Avatar', '2009-12-10', 'SCI_FI', 'Reżyseria: James Cameron');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Shrek', '2001-04-22', 'ANIMACJA', 'Reżyseria: Andrew Adamson');
 INSERT INTO movie (title, date_of_premiere, genre, description)
@@ -33,7 +33,7 @@ VALUES ('Ojciec chrzestny', '1972-03-15', 'GANGSTERSKI', 'Reżyseria: Francis Fo
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Szósty zmysl', '1999-08-02', 'THRILLER', 'Reżyseria: M. Night Shyamalan');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Incepcja', '2010-07-08', 'SCI-FI', 'Reżyseria: Christopher Nolan');
+VALUES ('Incepcja', '2010-07-08', 'SCI_FI', 'Reżyseria: Christopher Nolan');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Siedem', '1995-09-15', 'THRILLER', 'Reżyseria: David Fincher');
 INSERT INTO movie (title, date_of_premiere, genre, description)
@@ -59,7 +59,7 @@ VALUES ('Slumdog. Milioner z ulicy', '2008-08-30', 'DRAMAT', 'Reżyseria: Danny 
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Cast Away - poza światem', '2000-12-07', 'DRAMAT', 'Reżyseria: Robert Zemeckis');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Seksmisja', '1983-05-14', 'SCI-FI', 'Reżyseria: Juliusz Machulski');
+VALUES ('Seksmisja', '1983-05-14', 'SCI_FI', 'Reżyseria: Juliusz Machulski');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('American Beauty', '1999-09-08', 'KOMEDIA', 'Reżyseria: Sam Mendes');
 INSERT INTO movie (title, date_of_premiere, genre, description)
@@ -69,7 +69,7 @@ VALUES ('Ciekawy przypadek Benjamina Buttona', '2008-12-10', 'FANTASY', 'Reżyse
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Lot nad kukulczym gniazdem', '1975-11-19', 'PSYCHOLOGICZNY', 'Reżyseria: Miloš Forman');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Efekt motyla', '2004-01-17', 'SCI-FI', 'Reżyseria: J. Mackye Gruber');
+VALUES ('Efekt motyla', '2004-01-17', 'SCI_FI', 'Reżyseria: J. Mackye Gruber');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Kod da Vinci', '2006-05-17', 'THRILLER', 'Reżyseria: Ron Howard');
 INSERT INTO movie (title, date_of_premiere, genre, description)
@@ -79,9 +79,9 @@ VALUES ('Lśnienie', '1980-05-23', 'HORROR', 'Reżyseria: Stanley Kubrick');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Django', '2012-12-11', 'WESTERN', 'Reżyseria: Quentin Tarantino');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Mroczny Rycerz', '2008-07-14', 'SCI-FI', 'Reżyseria: Christopher Nolan');
+VALUES ('Mroczny Rycerz', '2008-07-14', 'SCI_FI', 'Reżyseria: Christopher Nolan');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Truman Show', '1998-06-01', 'SCI-FI', 'Reżyseria: Peter Weir');
+VALUES ('Truman Show', '1998-06-01', 'SCI_FI', 'Reżyseria: Peter Weir');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Zapach kobiety', '1992-12-23', 'DRAMAT', 'Reżyseria: Martin Brest');
 INSERT INTO movie (title, date_of_premiere, genre, description)
@@ -105,7 +105,7 @@ VALUES ('Sherlock Holmes', '2009-12-14', 'KRYMINAL', 'Reżyseria: Guy Ritchie');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Edward Nozycoręki', '1990-12-06', 'DRAMAT', 'Reżyseria: Tim Burton');
 INSERT INTO movie (title, date_of_premiere, genre, description)
-VALUES ('Interstellar', '2014-10-26', 'SCI-FI', 'Reżyseria: Christopher Nolan');
+VALUES ('Interstellar', '2014-10-26', 'SCI_FI', 'Reżyseria: Christopher Nolan');
 INSERT INTO movie (title, date_of_premiere, genre, description)
 VALUES ('Wladca Pierścieni: Dwie wieze', '2002-12-05', 'FANTASY', 'Reżyseria: Peter Jackson');
 INSERT INTO movie (title, date_of_premiere, genre, description)
