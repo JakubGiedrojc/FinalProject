@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface MovieRepository extends CrudRepository <Movie, Long> {
     Optional<Movie> findByTitle(String title);
-    @Query(value = " select movie from moviecopy join orders where order_id ==null",nativeQuery = true)
+    @Query(value = " select movie from movie_copy where order_id is null",nativeQuery = true)
     Movie findMovieWhichHasACopyAndOrderIDEqualsNull(Movie movie);
 }

@@ -24,57 +24,47 @@ public class Cart {
 
     private final MovieRepository movieRepository;
     private final OrderRepository orderRepository;
+    private final CopyRepository copyRepository;
     private final List<Movie> movies = new ArrayList<>();// zamienić na List<Film>
 
     @Autowired
-    public Cart(MovieRepository movieRepository, OrderRepository orderRepository) {
+    public Cart(MovieRepository movieRepository, OrderRepository orderRepository,CopyRepository copyRepository) {
         this.movieRepository = movieRepository;
         this.orderRepository = orderRepository;
+        this.copyRepository=copyRepository;
+
     }
 
-    public void addCopy(Movie movie) throws NotEnoughCopiesInResourcesException {
-        //check czy film ma dostępne kopie z orderId ==null
-        if(movieRepository.findMovieWhichHasACopyAndOrderIDEqualsNull(movie)!=null){
-        Copy selectedCopy=movieRepository.findMovieWhichHasACopyAndOrderIDEqualsNull(movie)
-                .getCopies()
-                .stream()
-                .findFirst()
-                .get();
-        movies.add(movie);}else throw new NotEnoughCopiesInResourcesException();
+    public void addMovie(Movie movie) {
+        movies.add(movie);
     }
 
     public void removeMovie(Movie movie) {
-        //remove movie
-        if (movies.contains(movie)){
-            movies.remove(movie);
-        } else {
-            System.out.println("You cannot do this operation");
-        }
+        movies.remove(movie);
     }
 
     public List<Movie> getMoviesInCart() { //unmodifibleList
         return Collections.unmodifiableList(movies);
     }
 
-    public Order checkout() throws NotEnoughCopiesInResourcesException {
-        List<Movie> checkoutlist =getMoviesInCart();
-        List<Copy> checkoutCopy = new ArrayList<>();
-        for (int i = 0; i < checkoutlist.size()-1; i++) {
-            checkoutCopy.add(checkoutlist.get(i).getCopies().stream().findFirst().get());
+    public void checkout() throws NotEnoughCopiesInResourcesException {
+        List<Copy> copies = new ArrayList();
+        List<Movie> impossibleToRent = new ArrayList();
+        for(Movie m : movies) {
+            copies.add(copyRepository.findNotRented(m));
 
-        }
-        if (checkoutCopy.size()==checkoutlist.size()){
-            Order myOrder=new Order();
-            myOrder.setCopies(checkoutCopy);
-            orderRepository.save(myOrder);
-            return myOrder;
-        } else {
-            System.out.println("unfortunatelly, some movies got now free copy. You can check what's still available below");
-            for (int i = 0; i < checkoutlist.size()-1; i++) {
-                System.out.println(checkoutCopy.get(i).getMovie().getTitle());
+            if(copyRepository.findNotRented(m) == null) {
+                //uwzglednic wyjatek
+                impossibleToRent.add(m);
+                movies.remove(m);//usuwa z koszyka
             }
         }
-        return null;
+        //jak przeiterujesz po wszystkich to wyswietlasz jeszcze raz strone koszyka ORAZ liste filmow ktorych nie da sie wypozyczyc na skutek braku kopii (impossibleToRent)
+        //Nie mamy wolnych kopii nstp filmow:
+        System.out.println("Nie mamy wolnych kopii nstp filmow");
+        impossibleToRent.stream();
+        System.out.println("Twój koszyk został zaaktualizowany poniżej");
+        movies.stream();
 
 
     }
