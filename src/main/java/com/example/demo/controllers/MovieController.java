@@ -18,7 +18,7 @@ public class MovieController {
     MovieService movieService;
 
     @GetMapping("get-all")
-    public List<Movie> getAllMovie() throws EmptyMovieDataBaseException    {
+    public List<Movie> getAllMovies() throws EmptyMovieDataBaseException    {
         return movieService.getAllMovies();
     }
 
