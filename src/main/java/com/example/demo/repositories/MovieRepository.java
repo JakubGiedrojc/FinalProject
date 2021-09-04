@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,10 @@ public interface MovieRepository extends CrudRepository <Movie, Long> {
     Optional<Movie> findByTitle(String title);
     @Query(value = " select movie from movie_copy where order_id is null",nativeQuery = true)
     Movie findMovieWhichHasACopyAndOrderIDEqualsNull(Movie movie);
+
     List<Movie> findAllByGenre(Genre genre);
+
+    @Query(value="select * from movie where year(date_of_premiere)=?1", nativeQuery = true )
+    List<Movie>findAllByDateOfPremiere(int y);
 
 }

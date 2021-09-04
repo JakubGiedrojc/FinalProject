@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -50,7 +51,11 @@ public class MovieController {
     @GetMapping("get-genre")
     public List<Movie> getMoviesByGenre(@RequestParam Genre genre) {
         return this.movieService.getMoviesByGenre(genre);
-
     }
 
+    @GetMapping("get-date")
+    public List<Movie> getMoviesByGenre(@RequestParam int year) {
+
+        return this.movieService.getMoviesByDate(year);
+    }
 }

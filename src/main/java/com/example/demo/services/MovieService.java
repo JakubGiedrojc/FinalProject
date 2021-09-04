@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class MovieService {
         return entity;
 
     }
-
+    @Transactional
     public void delete(Long id) throws MovieWithThisIdIsNotExistException {
 
         if (movieRepository.findById(id).isPresent()) {
@@ -79,11 +80,14 @@ public class MovieService {
             throw new MovieWithThisIdIsNotExistException(id);
         }
     }
+    @Transactional
     public List<Movie> getMoviesByGenre(Genre genre) {
         //List<Movie> movies = new ArrayList<>();
-        return movieRepository.findAllByGenre(genre);
+        return this.movieRepository.findAllByGenre(genre);
     }
-
-
+    @Transactional
+    public List<Movie>getMoviesByDate(int year){
+        return this.movieRepository.findAllByDateOfPremiere(year);
+    }
 
 }
