@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.entities.Genre;
 import com.example.demo.entities.Movie;
 import com.example.demo.exceptions.MovieAlreadyPresentException;
 import com.example.demo.exceptions.EmptyMovieDataBaseException;
@@ -78,4 +79,11 @@ public class MovieService {
             throw new MovieWithThisIdIsNotExistException(id);
         }
     }
+    public List<Movie> getMoviesByGenre(Genre genre) {
+        //List<Movie> movies = new ArrayList<>();
+        return movieRepository.findAllByGenre(genre);
+    }
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Genre;
 import com.example.demo.entities.Movie;
 import com.example.demo.exceptions.EmptyMovieDataBaseException;
 import com.example.demo.exceptions.MovieAlreadyPresentException;
@@ -26,12 +27,12 @@ public class MovieController {
     }
 
     @PostMapping("add")
-    public Movie InsertNewMovie(@RequestBody Movie movie) throws MovieAlreadyPresentException {
+    public Movie insertNewMovie(@RequestBody Movie movie) throws MovieAlreadyPresentException {
         return this.movieService.InsertNewMovie(movie);
     }
 
     @GetMapping("get-by-title")
-    public Movie GetMovieByTitle(@RequestParam String title) throws MovieWithThisTitleNotFound {
+    public Movie getMovieByTitle(@RequestParam String title) throws MovieWithThisTitleNotFound {
         return this.movieService.getByTitle(title);
     }
 
@@ -44,6 +45,12 @@ public class MovieController {
     public String deleteMovieById(@RequestParam Long id) throws MovieWithThisIdIsNotExistException {
         this.movieService.delete(id);
         return "Movie with id: " + id + " deleted";
+    }
+
+    @GetMapping("get-genre")
+    public List<Movie> getMoviesByGenre(@RequestParam Genre genre) {
+        return this.movieService.getMoviesByGenre(genre);
+
     }
 
 }
