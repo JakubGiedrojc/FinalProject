@@ -1,18 +1,20 @@
-package com.example.demo.services;
+package com.example.demo.services.userServices;
 
 import com.example.demo.entities.User;
 import com.example.demo.exceptions.ErrorMessage;
 import com.example.demo.exceptions.UserAlreadyExistException;
 import com.example.demo.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class UserRegistration {
 
-    @Autowired
+
     UserRepository userRepository;
     ErrorMessage errorMessage;
 
