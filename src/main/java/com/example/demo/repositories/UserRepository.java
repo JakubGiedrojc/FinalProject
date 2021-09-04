@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Integer> {
     List<User> findByLogin(String login);
     List<User> findByEmailAddress(String emailAddress);
+
 }
