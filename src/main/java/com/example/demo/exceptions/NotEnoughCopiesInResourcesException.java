@@ -3,7 +3,10 @@ package com.example.demo.exceptions;
 import com.example.demo.entities.Copy;
 import com.example.demo.entities.Movie;
 
+import java.util.List;
+
 public class NotEnoughCopiesInResourcesException extends Exception{
+    List<Movie> moviesNotPossibleToRent;
     private static final String DEFAULT_MESSAGE = "Not enough copies in resources";
 
     public NotEnoughCopiesInResourcesException(){
@@ -12,6 +15,7 @@ public class NotEnoughCopiesInResourcesException extends Exception{
 
     public NotEnoughCopiesInResourcesException(Copy copy){
         super(String.format("Not enough %s copies in resources",copy.getMovie().getTitle()));
+
     }
 
 

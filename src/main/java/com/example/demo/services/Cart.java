@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.datatransferobject.CheckoutResult;
 import com.example.demo.entities.Copy;
 import com.example.demo.entities.Movie;
 import com.example.demo.entities.Order;
@@ -7,6 +8,8 @@ import com.example.demo.exceptions.NotEnoughCopiesInResourcesException;
 import com.example.demo.repositories.CopyRepository;
 import com.example.demo.repositories.MovieRepository;
 import com.example.demo.repositories.OrderRepository;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -15,25 +18,21 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Transactional
+@RequiredArgsConstructor
 public class Cart {
 
-    private final MovieRepository movieRepository;
+
     private final OrderRepository orderRepository;
     private final CopyRepository copyRepository;
-    private final List<Movie> movies = new ArrayList<>();// zamienić na List<Film>
+    private  List<Movie> movies = new ArrayList<>();// zamienić na List<Film>
 
-    @Autowired
-    public Cart(MovieRepository movieRepository, OrderRepository orderRepository,CopyRepository copyRepository) {
-        this.movieRepository = movieRepository;
-        this.orderRepository = orderRepository;
-        this.copyRepository=copyRepository;
 
-    }
 
     public void addMovie(Movie movie) {
         movies.add(movie);
@@ -47,7 +46,7 @@ public class Cart {
         return Collections.unmodifiableList(movies);
     }
 
-    public void checkout() throws NotEnoughCopiesInResourcesException {
+    public CheckoutResult checkout() throws NotEnoughCopiesInResourcesException {
         List<Copy> copies = new ArrayList();
         List<Movie> impossibleToRent = new ArrayList();
         for(Movie m : movies) {
@@ -59,14 +58,24 @@ public class Cart {
                 movies.remove(m);//usuwa z koszyka
             }
         }
-        //jak przeiterujesz po wszystkich to wyswietlasz jeszcze raz strone koszyka ORAZ liste filmow ktorych nie da sie wypozyczyc na skutek braku kopii (impossibleToRent)
-        //Nie mamy wolnych kopii nstp filmow:
-        System.out.println("Nie mamy wolnych kopii nstp filmow");
-        System.out.println(impossibleToRent);
-        System.out.println("Twój koszyk został zaaktualizowany poniżej");
-        movies.stream();
+        CheckoutResult checkoutResult;
+        if (impossibleToRent.isEmpty()){
+            checkoutResult=new CheckoutResult(true);
+            Order order = new Order();
+            checkoutResult.setOrder(order);
+            order.setStartDate(LocalDate.now());
+            order.setCopies(copies);
+            orderRepository.save(order);
+        } else {
+            checkoutResult=new CheckoutResult(false);
+            checkoutResult.setMovies(movies);
+            checkoutResult.setMissingMovies(impossibleToRent);
+        }
+        return checkoutResult;
 
 
     }
+
+
 }
 
