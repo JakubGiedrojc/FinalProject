@@ -15,14 +15,15 @@ public class AddCopyToCatalogue {
     MovieRepository movieRepository;
     @Autowired
     CopyRepository copyRepository;
-    Movie movie;
 
     @Transactional
-    public Copy add (Copy copy) throws MovieWithThisIdIsNotExistException {
+    public Copy add (Movie movie) throws MovieWithThisIdIsNotExistException {
         if(movieRepository.findById(movie.getId()).isEmpty()){
             throw new MovieWithThisIdIsNotExistException(movie.getId());
 
         }
+        Copy copy= new Copy();
+        copy.setMovie(movie);
         return copyRepository.save(copy);
     }
 }

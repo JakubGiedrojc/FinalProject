@@ -62,7 +62,7 @@ public class Cart {
         //jak przeiterujesz po wszystkich to wyswietlasz jeszcze raz strone koszyka ORAZ liste filmow ktorych nie da sie wypozyczyc na skutek braku kopii (impossibleToRent)
         //Nie mamy wolnych kopii nstp filmow:
         System.out.println("Nie mamy wolnych kopii nstp filmow");
-        impossibleToRent.stream();
+        System.out.println(impossibleToRent);
         System.out.println("Twój koszyk został zaaktualizowany poniżej");
         movies.stream();
 

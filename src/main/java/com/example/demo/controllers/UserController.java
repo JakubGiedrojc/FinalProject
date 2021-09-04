@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     UserRegistration userRegistration;
 
-    @PostMapping("add/user")
+    @PostMapping("add")
     public User registration(@RequestBody User user) throws UserAlreadyExistException {
         return userRegistration.registration(user);
 

@@ -17,8 +17,8 @@ public class CopyController {
     @Autowired
     AddCopyToCatalogue addCopyToCatalogue;
 
-    @PostMapping("add/copy")
+    @PostMapping("add")
     public Copy add (@RequestBody Copy copy) throws MovieWithThisIdIsNotExistException {
-        return addCopyToCatalogue.add(copy);
+        return addCopyToCatalogue.add(copy.getMovie());
     }
 }
