@@ -16,13 +16,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("cart")
+@RequestMapping("/cart")
 @AllArgsConstructor
 public class CartController {
     private Cart cart;
     private MovieRepository movieRepository;
 
-    @PostMapping("add/movie")
+    @GetMapping
+    public String cart(){
+        return "cart";
+    }
+
+    @PostMapping("/add/movie")
     @ResponseStatus(HttpStatus.CREATED)
     public Optional<Movie> addMovie(@RequestParam String movieTitle){
         Optional<Movie> movie =movieRepository.findByTitle(movieTitle);
@@ -30,7 +35,7 @@ public class CartController {
         cart.addMovie(movie.get());
         return movie;}else
             return null;}
-    @DeleteMapping("remove/[title]")
+    @DeleteMapping("/remove/[title]")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void removeMovie(@PathVariable String title){
         Optional<Movie> movie=cart.getMoviesInCart().stream().filter(m -> m.getTitle().equals(title)).findFirst();
@@ -38,7 +43,7 @@ public class CartController {
         cart.getMoviesInCart().remove(movie.get());}
 
     }
-    @GetMapping("getmovies")
+    @GetMapping("/getmovies")
     @ResponseStatus(HttpStatus.FOUND)
     public List<Movie> getMovies(){
         return cart.getMoviesInCart();
