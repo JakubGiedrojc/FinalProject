@@ -24,6 +24,4 @@ public class Copy {
     @JoinColumn(name = "order_id")
     private Order order;
 
-
-
 }
