@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>library movie</title>
+</head>
+<body>
+<!--<tr
+        th:each="movie, iStat : ${movies}"
+        th:style="${iStat.odd}? 'font-weight: bold;'"
+        th:alt-title="${iStat.even}? 'even' : 'odd'">
+    <td th:text="${movie.id}" />
+    <td th:text="${movie.title}" />
+    <td th:text="${movie.genre}"/>
+    <td th:text="${movie.dateOfPremiere}"/>
+    <td th:text="${movie.description}"/>
+</tr>-->
+<button>sortuj po gatunkach</button>
+<table  style="width: 100%">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Tytuł</th>
+        <th>Gatunek</th>
+        <th>Data premiery</th>
+        <th>Opis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${movies}">
+        <td th:text="${movie.id}">Id</td>
+        <td th:text="${movie.title}">Tytuł</td>
+        <td th:text="${movie.genre}">Gatunek</td>
+        <td th:text="${movie.dateOfPremiere}">Data premiery</td>
+        <td th:text="${movie.description}">Opis</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
