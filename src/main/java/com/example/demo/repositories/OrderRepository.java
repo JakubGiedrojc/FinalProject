@@ -9,4 +9,6 @@ import java.util.Optional;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
     List<Optional<Order>> findAllByUser(User user);
+
+    Order getOrderById(int orderId);
 }

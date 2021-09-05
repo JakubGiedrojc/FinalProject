@@ -26,5 +26,7 @@ public class Order {
     private float price;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<Copy> copies;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
 }
